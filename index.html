@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="js/libs/three.js"></script>
+    <script src="js/libs/OrbitControls.js"></script>
+    <script src="./src/bundle.js"></script>
+
+
+
+    <!-- <script src="js/libs/threex.planets-master/images/galaxy_starfield.jpg"></script> -->
+
+    <!-- <script src='../common/libs/three_v87.min.js'></script> -->
+
+    <!-- <script src="js/sceneSubjects/GeneralLights.js"></script>
+    <script src="js/sceneSubjects/StarField.js"></script>
+    <script src="js/sceneSubjects/Sun.js"></script>
+    <script src="js/sceneSubjects/Earth.js"></script>
+    
+    <script src="js/SceneManager.js"></script>
+    <script src="js/main.js"></script> -->
+
+    <!-- <script>
+			// Our Javascript will go here.
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 7;
+            var renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setClearColor("#e5e5e5");
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            document.body.appendChild(renderer.domElement);
+
+            window.addEventListener('resize', () => {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+
+                camera.updateProjectionMatrix();
+            })
+
+            renderer.render(scene, camera);
+
+            var geometry = new THREE.BoxGeometry(1, 1, 1);
+            var material = new THREE.MeshLambertMaterial({color: 0xFFCC00});
+            var mesh = new THREE.Mesh(geometry, material);
+
+            mesh.position.x = 0;
+
+            scene.add(mesh);
+
+            var light = new THREE.PointLight(0xFFFFFF, 1, 500)
+            light.position.set(10,0, 25);
+            scene.add(light);
+
+            var render = function() {
+                requestAnimationFrame(render);
+
+                mesh.rotation.y += 0.0;
+
+                renderer.render(scene, camera)
+            }
+
+            render();
+
+    </script> -->
+</body>
+
+</html>
