@@ -9,6 +9,14 @@ import GeneralLights from "./sceneSubjects/GeneralLights";
 import StarField from "./sceneSubjects/StarField";
 import Sun from "./sceneSubjects/Sun";
 import Moon from "./sceneSubjects/Moon";
+import Mercury from "./sceneSubjects/Mercury";
+import Venus from "./sceneSubjects/Venus";
+import Mars from "./sceneSubjects/Mars";
+import Jupiter from "./sceneSubjects/Jupiter";
+import Saturn from "./sceneSubjects/Saturn";
+import Uranus from "./sceneSubjects/Uranus";
+import Neptune from "./sceneSubjects/Neptune";
+import Pluto from "./sceneSubjects/Pluto";
 
 
 function SceneManager(canvas) {
@@ -27,7 +35,7 @@ function SceneManager(canvas) {
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     camera.position.z = 10;
     controls.minDistance = 5;
-    controls.maxDistance = 2000;
+    controls.maxDistance = 1000;
 
     function buildScene() {
         const scene = new THREE.Scene();
@@ -101,7 +109,14 @@ function SceneManager(canvas) {
             new StarField(scene),
             new Sun(scene),
             new Earth(scene),
-            // new Moon(scene)
+            new Mercury(scene),
+            new Venus(scene),
+            new Mars(scene),
+            new Jupiter(scene),
+            new Saturn(scene),
+            new Uranus(scene), 
+            new Neptune(scene),
+            new Pluto(scene)
         ];
 
         // THREE.sceneSubjects[3].add(sceneSubjects[4]);

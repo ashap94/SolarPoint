@@ -100,12 +100,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sceneSubjects_StarField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sceneSubjects/StarField */ "./js/sceneSubjects/StarField.js");
 /* harmony import */ var _sceneSubjects_Sun__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sceneSubjects/Sun */ "./js/sceneSubjects/Sun.js");
 /* harmony import */ var _sceneSubjects_Moon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sceneSubjects/Moon */ "./js/sceneSubjects/Moon.js");
+/* harmony import */ var _sceneSubjects_Mercury__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sceneSubjects/Mercury */ "./js/sceneSubjects/Mercury.js");
+/* harmony import */ var _sceneSubjects_Venus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sceneSubjects/Venus */ "./js/sceneSubjects/Venus.js");
+/* harmony import */ var _sceneSubjects_Mars__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sceneSubjects/Mars */ "./js/sceneSubjects/Mars.js");
+/* harmony import */ var _sceneSubjects_Jupiter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./sceneSubjects/Jupiter */ "./js/sceneSubjects/Jupiter.js");
+/* harmony import */ var _sceneSubjects_Saturn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./sceneSubjects/Saturn */ "./js/sceneSubjects/Saturn.js");
+/* harmony import */ var _sceneSubjects_Uranus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./sceneSubjects/Uranus */ "./js/sceneSubjects/Uranus.js");
+/* harmony import */ var _sceneSubjects_Neptune__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./sceneSubjects/Neptune */ "./js/sceneSubjects/Neptune.js");
+/* harmony import */ var _sceneSubjects_Pluto__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./sceneSubjects/Pluto */ "./js/sceneSubjects/Pluto.js");
 // var THREE = require('three');
 // var OrbitControls = require('three-orbit-controls')(THREE);
 // OrbitControls === undefined;
 
 // import * as THREE from 'three';
 // import { OrbitControls } from 'three-orbitcontrols-ts';
+
+
+
+
+
+
+
+
 
 
 
@@ -129,7 +145,7 @@ function SceneManager(canvas) {
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     camera.position.z = 10;
     controls.minDistance = 5;
-    controls.maxDistance = 2000;
+    controls.maxDistance = 1000;
 
     function buildScene() {
         const scene = new THREE.Scene();
@@ -203,7 +219,14 @@ function SceneManager(canvas) {
             new _sceneSubjects_StarField__WEBPACK_IMPORTED_MODULE_2__["default"](scene),
             new _sceneSubjects_Sun__WEBPACK_IMPORTED_MODULE_3__["default"](scene),
             new _sceneSubjects_Earth__WEBPACK_IMPORTED_MODULE_0__["default"](scene),
-            // new Moon(scene)
+            new _sceneSubjects_Mercury__WEBPACK_IMPORTED_MODULE_5__["default"](scene),
+            new _sceneSubjects_Venus__WEBPACK_IMPORTED_MODULE_6__["default"](scene),
+            new _sceneSubjects_Mars__WEBPACK_IMPORTED_MODULE_7__["default"](scene),
+            new _sceneSubjects_Jupiter__WEBPACK_IMPORTED_MODULE_8__["default"](scene),
+            new _sceneSubjects_Saturn__WEBPACK_IMPORTED_MODULE_9__["default"](scene),
+            new _sceneSubjects_Uranus__WEBPACK_IMPORTED_MODULE_10__["default"](scene), 
+            new _sceneSubjects_Neptune__WEBPACK_IMPORTED_MODULE_11__["default"](scene),
+            new _sceneSubjects_Pluto__WEBPACK_IMPORTED_MODULE_12__["default"](scene)
         ];
 
         // THREE.sceneSubjects[3].add(sceneSubjects[4]);
@@ -261,12 +284,12 @@ function Earth(scene) {
     // earth.material.specularMap = THREE.ImageUtils.loadTexture('images/earthspec1k.jpg');
     // earth.material.specular = new THREE.Color('grey');
     
-    var orbitRadius = 25;
+    var orbitRadius = 40;
     var orbitRadiusMoon = 5;
 
     earth.position.set(orbitRadius, 0, 0);
-    // earth.rotation.z = (Math.PI / 2);
-    // earth.rotation.x = Math.PI / 2;
+    // earth.rotation.y = (Math.PI / 2);
+    earth.rotation.x = Math.PI / 2;
 
 
     var material = new THREE.LineBasicMaterial({color: 'aqua'});
@@ -308,7 +331,7 @@ function Earth(scene) {
     // var moon = new Moon(scene);
 
     earth.add( moon );
-    earth.add( lineMoon);
+    // earth.add( lineMoon);
 
     scene.add(earth);
     scene.add(line);
@@ -325,11 +348,11 @@ function Earth(scene) {
         earth.position.y = Math.sin(time * 0.15) * orbitRadius ;
         earth.rotation.y = time * 0.45;
 
-        earth.children.Mesh.position.x = Math.cos(time * 0.15) * orbitRadiusMoon;
-        earth.children.Mesh.position.y = Math.sin(time * 0.15) * orbitRadiusMoon;
-        earth.children.Mesh.rotation.y = time * 0.45;
+        earth.children[0].position.x = Math.cos(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].position.y = Math.sin(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].rotation.y = time * 0.45;
 
-        // lineMoon.rotation.y = time * 0.45;
+        // earth.children[1].rotation.y = -(time * 0.45);
         
     }
 
@@ -369,6 +392,144 @@ function GeneralLights(scene) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (GeneralLights);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Jupiter.js":
+/*!*************************************!*\
+  !*** ./js/sceneSubjects/Jupiter.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Jupiter(scene) {
+
+    var jupiter = new THREE.Mesh(
+        new THREE.SphereGeometry(5, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    jupiter.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/jupitermap.jpg');
+    // jupiter.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
+    // jupiter.material.bumpScale = 0.05;
+
+    var orbitRadius = 60;
+
+    jupiter.position.set(orbitRadius, 0, 0);
+    jupiter.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    // console.log(jupiter);
+
+    scene.add(jupiter);
+    scene.add(line);
+
+    this.update = function (time) {
+        jupiter.position.x = Math.cos(time * 0.15) * orbitRadius;
+        jupiter.position.y = Math.sin(time * 0.15) * orbitRadius;
+        jupiter.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Jupiter);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Mars.js":
+/*!**********************************!*\
+  !*** ./js/sceneSubjects/Mars.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Mars(scene) {
+
+    var mars = new THREE.Mesh(
+        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    mars.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsmap1k.jpg');
+    mars.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
+    mars.material.bumpScale = 0.05;
+
+    var orbitRadius = 50;
+
+    mars.position.set(orbitRadius, 0, 0);
+    mars.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    console.log(mars);
+
+    scene.add(mars);
+    scene.add(line);
+
+    this.update = function (time) {
+        mars.position.x = Math.cos(time * 0.15) * orbitRadius;
+        mars.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mars.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Mars);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Mercury.js":
+/*!*************************************!*\
+  !*** ./js/sceneSubjects/Mercury.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Mercury(scene) {
+
+    var mercury = new THREE.Mesh(
+        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    mercury.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurymap.jpg');
+    mercury.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurybump.jpg');
+    mercury.material.bumpScale = 0.05;
+
+    var orbitRadius = 8;
+
+    mercury.position.set(orbitRadius, 0, 0);
+    mercury.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    console.log(mercury);
+
+    scene.add(mercury);
+    scene.add(line);
+
+    this.update = function (time) {
+        mercury.position.x = Math.cos(time * 0.15) * orbitRadius;
+        mercury.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mercury.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Mercury);
 
 /***/ }),
 
@@ -413,6 +574,156 @@ function Moon(scene) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Moon);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Neptune.js":
+/*!*************************************!*\
+  !*** ./js/sceneSubjects/Neptune.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Neptune(scene) {
+
+    var neptune = new THREE.Mesh(
+        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    neptune.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/neptunemap.jpg');
+    // neptune.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
+    // neptune.material.bumpScale = 0.05;
+
+    var orbitRadius = 110;
+
+    neptune.position.set(orbitRadius, 0, 0);
+    neptune.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    console.log(neptune);
+
+    scene.add(neptune);
+    scene.add(line);
+
+    this.update = function (time) {
+        neptune.position.x = Math.cos(time * 0.15) * orbitRadius;
+        neptune.position.y = Math.sin(time * 0.15) * orbitRadius;
+        neptune.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Neptune);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Pluto.js":
+/*!***********************************!*\
+  !*** ./js/sceneSubjects/Pluto.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Pluto(scene) {
+
+    var pluto = new THREE.Mesh(
+        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    pluto.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/plutomap1k.jpg');
+    pluto.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/plutobump1k.jpg');
+    pluto.material.bumpScale = 0.05;
+
+    var orbitRadius = 130;
+
+    pluto.position.set(orbitRadius, 0, 0);
+    pluto.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    console.log(pluto);
+
+    scene.add(pluto);
+    scene.add(line);
+
+    this.update = function (time) {
+        pluto.position.x = Math.cos(time * 0.15) * orbitRadius;
+        pluto.position.y = Math.sin(time * 0.15) * orbitRadius;
+        pluto.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Pluto);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Saturn.js":
+/*!************************************!*\
+  !*** ./js/sceneSubjects/Saturn.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Saturn(scene) {
+
+    var saturn = new THREE.Mesh(
+        new THREE.SphereGeometry(1.5, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    saturn.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnmap.jpg');
+    // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
+    // saturn.material.bumpScale = 0.05;
+
+    var orbitRadius = 70;
+
+    saturn.position.set(orbitRadius, 0, 0);
+    saturn.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    // console.log(saturn);
+
+    // SATURN'S RINGS
+    var rings = new THREE.Mesh(
+        new THREE.RingGeometry(3, 5, 30),
+        new THREE.MeshPhongMaterial());
+    
+    rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnringcolor.jpg');
+    rings.material.side = THREE.DoubleSide;
+
+    saturn.add(rings);
+    
+    scene.add(saturn);
+    scene.add(line);
+
+    saturn.children[0].rotation.x = Math.PI / 2;
+
+    this.update = function (time) {
+        saturn.position.x = Math.cos(time * 0.15) * orbitRadius;
+        saturn.position.y = Math.sin(time * 0.15) * orbitRadius;
+        saturn.rotation.y = time * 0.45;
+    };
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Saturn);
 
 /***/ }),
 
@@ -481,6 +792,110 @@ function Sun(scene) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Sun);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Uranus.js":
+/*!************************************!*\
+  !*** ./js/sceneSubjects/Uranus.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Uranus(scene) {
+
+    var uranus = new THREE.Mesh(
+        new THREE.SphereGeometry(2, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    uranus.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusmap.jpg');
+    // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
+    // saturn.material.bumpScale = 0.05;
+
+    var orbitRadius = 90;
+
+    uranus.position.set(orbitRadius, 0, 0);
+    uranus.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    // console.log(uranus);
+
+    // SATURN'S RINGS
+    var rings = new THREE.Mesh(
+        new THREE.RingGeometry(3.5, 3.8, 30),
+        new THREE.MeshPhongMaterial());
+
+    rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusringcolour.jpg');
+    rings.material.side = THREE.DoubleSide;
+
+    uranus.add(rings);
+
+    scene.add(uranus);
+    scene.add(line);
+
+    uranus.children[0].rotation.x = Math.PI / 2;
+
+    this.update = function (time) {
+        uranus.position.x = Math.cos(time * 0.15) * orbitRadius;
+        uranus.position.y = Math.sin(time * 0.15) * orbitRadius;
+        uranus.rotation.y = time * 0.45;
+    };
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Uranus);
+
+/***/ }),
+
+/***/ "./js/sceneSubjects/Venus.js":
+/*!***********************************!*\
+  !*** ./js/sceneSubjects/Venus.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function Venus(scene) {
+
+    var venus = new THREE.Mesh(
+        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.MeshPhongMaterial());
+
+    venus.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/venusmap.jpg');
+    venus.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/venusbump.jpg');
+    venus.material.bumpScale = 0.05;
+
+    var orbitRadius = 15;
+
+    venus.position.set(orbitRadius, 0, 0);
+    venus.rotation.x = Math.PI / 2;
+
+    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
+    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+    geometry.vertices.shift();
+    var line = new THREE.Line(geometry, material);
+    line.position.set(0, 0, 0);
+    console.log(venus);
+
+    scene.add(venus);
+    scene.add(line);
+
+    this.update = function (time) {
+        venus.position.x = Math.cos(time * 0.15) * orbitRadius;
+        venus.position.y = Math.sin(time * 0.15) * orbitRadius;
+        venus.rotation.y = time * 0.45;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Venus);
 
 /***/ }),
 

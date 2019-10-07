@@ -13,12 +13,12 @@ function Earth(scene) {
     // earth.material.specularMap = THREE.ImageUtils.loadTexture('images/earthspec1k.jpg');
     // earth.material.specular = new THREE.Color('grey');
     
-    var orbitRadius = 25;
+    var orbitRadius = 40;
     var orbitRadiusMoon = 5;
 
     earth.position.set(orbitRadius, 0, 0);
-    // earth.rotation.z = (Math.PI / 2);
-    // earth.rotation.x = Math.PI / 2;
+    // earth.rotation.y = (Math.PI / 2);
+    earth.rotation.x = Math.PI / 2;
 
 
     var material = new THREE.LineBasicMaterial({color: 'aqua'});
@@ -60,7 +60,7 @@ function Earth(scene) {
     // var moon = new Moon(scene);
 
     earth.add( moon );
-    earth.add( lineMoon);
+    // earth.add( lineMoon);
 
     scene.add(earth);
     scene.add(line);
@@ -77,11 +77,11 @@ function Earth(scene) {
         earth.position.y = Math.sin(time * 0.15) * orbitRadius ;
         earth.rotation.y = time * 0.45;
 
-        earth.children.Mesh.position.x = Math.cos(time * 0.15) * orbitRadiusMoon;
-        earth.children.Mesh.position.y = Math.sin(time * 0.15) * orbitRadiusMoon;
-        earth.children.Mesh.rotation.y = time * 0.45;
+        earth.children[0].position.x = Math.cos(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].position.y = Math.sin(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].rotation.y = time * 0.45;
 
-        // lineMoon.rotation.y = time * 0.45;
+        // earth.children[1].rotation.y = -(time * 0.45);
         
     }
 
