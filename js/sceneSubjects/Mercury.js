@@ -18,7 +18,7 @@ function Mercury(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(mercury);
+    // console.log(mercury);
 
     scene.add(mercury);
     scene.add(line);

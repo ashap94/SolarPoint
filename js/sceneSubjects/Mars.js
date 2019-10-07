@@ -18,7 +18,7 @@ function Mars(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(mars);
+    // console.log(mars);
 
     scene.add(mars);
     scene.add(line);

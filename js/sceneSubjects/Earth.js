@@ -65,7 +65,7 @@ function Earth(scene) {
     scene.add(earth);
     scene.add(line);
 
-    console.log(earth);
+    // console.log(earth);
 
     // scene.add(mesh);
 

@@ -18,7 +18,7 @@ function Pluto(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(pluto);
+    // console.log(pluto);
 
     scene.add(pluto);
     scene.add(line);

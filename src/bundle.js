@@ -336,7 +336,6 @@ function Earth(scene) {
     scene.add(earth);
     scene.add(line);
 
-    console.log(earth);
 
     // scene.add(mesh);
 
@@ -470,7 +469,7 @@ function Mars(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(mars);
+    // console.log(mars);
 
     scene.add(mars);
     scene.add(line);
@@ -516,7 +515,7 @@ function Mercury(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(mercury);
+    // console.log(mercury);
 
     scene.add(mercury);
     scene.add(line);
@@ -606,7 +605,7 @@ function Neptune(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(neptune);
+    // console.log(neptune);
 
     scene.add(neptune);
     scene.add(line);
@@ -652,7 +651,7 @@ function Pluto(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(pluto);
+    // console.log(pluto);
 
     scene.add(pluto);
     scene.add(line);
@@ -882,7 +881,7 @@ function Venus(scene) {
     geometry.vertices.shift();
     var line = new THREE.Line(geometry, material);
     line.position.set(0, 0, 0);
-    console.log(venus);
+    // console.log(venus);
 
     scene.add(venus);
     scene.add(line);
