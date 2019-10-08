@@ -1,14 +1,14 @@
 function Saturn(scene) {
 
     var saturn = new THREE.Mesh(
-        new THREE.SphereGeometry(1.5, 30, 30),
+        new THREE.SphereGeometry(5, 30, 30),
         new THREE.MeshPhongMaterial());
 
     saturn.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnmap.jpg');
     // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // saturn.material.bumpScale = 0.05;
 
-    var orbitRadius = 70;
+    var orbitRadius = 85;
 
     saturn.position.set(orbitRadius, 0, 0);
     saturn.rotation.x = Math.PI / 2;
@@ -22,7 +22,7 @@ function Saturn(scene) {
 
     // SATURN'S RINGS
     var rings = new THREE.Mesh(
-        new THREE.RingGeometry(3, 5, 30),
+        new THREE.RingGeometry(6.4, 8, 30),
         new THREE.MeshPhongMaterial());
     
     rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnringcolor.jpg');
@@ -36,8 +36,8 @@ function Saturn(scene) {
     saturn.children[0].rotation.x = Math.PI / 2;
 
     this.update = function (time) {
-        saturn.position.x = Math.cos(time * 0.15) * orbitRadius;
-        saturn.position.y = Math.sin(time * 0.15) * orbitRadius;
+        saturn.position.x = Math.cos(time * 0.045) * orbitRadius;
+        saturn.position.y = Math.sin(time * 0.045) * orbitRadius;
         saturn.rotation.y = time * 0.45;
     };
 

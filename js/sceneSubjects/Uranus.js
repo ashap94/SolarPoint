@@ -1,14 +1,14 @@
 function Uranus(scene) {
 
     var uranus = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 30, 30),
+        new THREE.SphereGeometry(4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     uranus.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusmap.jpg');
     // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // saturn.material.bumpScale = 0.05;
 
-    var orbitRadius = 90;
+    var orbitRadius = 100;
 
     uranus.position.set(orbitRadius, 0, 0);
     uranus.rotation.x = Math.PI / 2;
@@ -22,7 +22,7 @@ function Uranus(scene) {
 
     // SATURN'S RINGS
     var rings = new THREE.Mesh(
-        new THREE.RingGeometry(3.5, 3.8, 30),
+        new THREE.RingGeometry(4.8, 5.3, 30),
         new THREE.MeshPhongMaterial());
 
     rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusringcolour.jpg');
@@ -36,8 +36,8 @@ function Uranus(scene) {
     uranus.children[0].rotation.x = Math.PI / 2;
 
     this.update = function (time) {
-        uranus.position.x = Math.cos(time * 0.15) * orbitRadius;
-        uranus.position.y = Math.sin(time * 0.15) * orbitRadius;
+        uranus.position.x = Math.cos(time * 0.038) * orbitRadius;
+        uranus.position.y = Math.sin(time * 0.038) * orbitRadius;
         uranus.rotation.y = time * 0.45;
     };
 

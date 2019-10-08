@@ -1,14 +1,14 @@
 function Mercury(scene) {
 
     var mercury = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(1.5, 30, 30),
         new THREE.MeshPhongMaterial());
 
     mercury.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurymap.jpg');
     mercury.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurybump.jpg');
     mercury.material.bumpScale = 0.05;
 
-    var orbitRadius = 8;
+    var orbitRadius = 15;
 
     mercury.position.set(orbitRadius, 0, 0);
     mercury.rotation.x = Math.PI / 2;
@@ -24,8 +24,8 @@ function Mercury(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        mercury.position.x = Math.cos(time * 0.15) * orbitRadius;
-        mercury.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mercury.position.x = Math.cos(time * 0.6) * orbitRadius;
+        mercury.position.y = Math.sin(time * 0.6) * orbitRadius;
         mercury.rotation.y = time * 0.45;
     }
 

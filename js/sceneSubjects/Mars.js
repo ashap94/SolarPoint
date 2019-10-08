@@ -1,14 +1,14 @@
 function Mars(scene) {
 
     var mars = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(2, 30, 30),
         new THREE.MeshPhongMaterial());
 
     mars.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsmap1k.jpg');
     mars.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     mars.material.bumpScale = 0.05;
 
-    var orbitRadius = 50;
+    var orbitRadius = 55;
 
     mars.position.set(orbitRadius, 0, 0);
     mars.rotation.x = Math.PI / 2;
@@ -24,8 +24,8 @@ function Mars(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        mars.position.x = Math.cos(time * 0.15) * orbitRadius;
-        mars.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mars.position.x = Math.cos(time * 0.09) * orbitRadius;
+        mars.position.y = Math.sin(time * 0.09) * orbitRadius;
         mars.rotation.y = time * 0.45;
     }
 

@@ -1,14 +1,14 @@
 function Neptune(scene) {
 
     var neptune = new THREE.Mesh(
-        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.SphereGeometry(4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     neptune.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/neptunemap.jpg');
     // neptune.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // neptune.material.bumpScale = 0.05;
 
-    var orbitRadius = 110;
+    var orbitRadius = 117;
 
     neptune.position.set(orbitRadius, 0, 0);
     neptune.rotation.x = Math.PI / 2;
@@ -24,8 +24,8 @@ function Neptune(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        neptune.position.x = Math.cos(time * 0.15) * orbitRadius;
-        neptune.position.y = Math.sin(time * 0.15) * orbitRadius;
+        neptune.position.x = Math.cos(time * 0.028) * orbitRadius;
+        neptune.position.y = Math.sin(time * 0.028) * orbitRadius;
         neptune.rotation.y = time * 0.45;
     }
 

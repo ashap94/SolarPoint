@@ -144,7 +144,7 @@ function SceneManager(canvas) {
     const sceneSubjects = createSceneSubjects(scene);
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     camera.position.z = 10;
-    controls.minDistance = 5;
+    controls.minDistance = 8;
     controls.maxDistance = 1000;
 
     function buildScene() {
@@ -274,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 function Earth(scene) {
 
     var earth = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 30, 30), 
+        new THREE.SphereGeometry(3.5, 30, 30), 
         new THREE.MeshPhongMaterial());
 
     // earth.material.color.set('rgb(30,230,55)');
@@ -284,8 +284,8 @@ function Earth(scene) {
     // earth.material.specularMap = THREE.ImageUtils.loadTexture('images/earthspec1k.jpg');
     // earth.material.specular = new THREE.Color('grey');
     
-    var orbitRadius = 40;
-    var orbitRadiusMoon = 5;
+    var orbitRadius = 45;
+    var orbitRadiusMoon = 5.8;
 
     earth.position.set(orbitRadius, 0, 0);
     // earth.rotation.y = (Math.PI / 2);
@@ -302,7 +302,7 @@ function Earth(scene) {
     // MOON Construction 
 
     var moon = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(1.4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     moon.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/moonmap1k.jpg');
@@ -330,12 +330,15 @@ function Earth(scene) {
 
     // var moon = new Moon(scene);
 
+    moon.rotation.x = -(Math.PI / 2);
+
     earth.add( moon );
     // earth.add( lineMoon);
 
     scene.add(earth);
     scene.add(line);
 
+    // console.log(earth);
 
     // scene.add(mesh);
 
@@ -347,7 +350,7 @@ function Earth(scene) {
         earth.position.y = Math.sin(time * 0.15) * orbitRadius ;
         earth.rotation.y = time * 0.45;
 
-        earth.children[0].position.x = Math.cos(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].position.z = Math.cos(time * 0.35) * orbitRadiusMoon;
         earth.children[0].position.y = Math.sin(time * 0.35) * orbitRadiusMoon;
         earth.children[0].rotation.y = time * 0.45;
 
@@ -406,14 +409,14 @@ __webpack_require__.r(__webpack_exports__);
 function Jupiter(scene) {
 
     var jupiter = new THREE.Mesh(
-        new THREE.SphereGeometry(5, 30, 30),
+        new THREE.SphereGeometry(6, 30, 30),
         new THREE.MeshPhongMaterial());
 
     jupiter.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/jupitermap.jpg');
     // jupiter.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // jupiter.material.bumpScale = 0.05;
 
-    var orbitRadius = 60;
+    var orbitRadius = 70;
 
     jupiter.position.set(orbitRadius, 0, 0);
     jupiter.rotation.x = Math.PI / 2;
@@ -429,8 +432,8 @@ function Jupiter(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        jupiter.position.x = Math.cos(time * 0.15) * orbitRadius;
-        jupiter.position.y = Math.sin(time * 0.15) * orbitRadius;
+        jupiter.position.x = Math.cos(time * 0.05) * orbitRadius;
+        jupiter.position.y = Math.sin(time * 0.05) * orbitRadius;
         jupiter.rotation.y = time * 0.45;
     }
 
@@ -452,14 +455,14 @@ __webpack_require__.r(__webpack_exports__);
 function Mars(scene) {
 
     var mars = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(2, 30, 30),
         new THREE.MeshPhongMaterial());
 
     mars.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsmap1k.jpg');
     mars.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     mars.material.bumpScale = 0.05;
 
-    var orbitRadius = 50;
+    var orbitRadius = 55;
 
     mars.position.set(orbitRadius, 0, 0);
     mars.rotation.x = Math.PI / 2;
@@ -475,8 +478,8 @@ function Mars(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        mars.position.x = Math.cos(time * 0.15) * orbitRadius;
-        mars.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mars.position.x = Math.cos(time * 0.09) * orbitRadius;
+        mars.position.y = Math.sin(time * 0.09) * orbitRadius;
         mars.rotation.y = time * 0.45;
     }
 
@@ -498,14 +501,14 @@ __webpack_require__.r(__webpack_exports__);
 function Mercury(scene) {
 
     var mercury = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(1.5, 30, 30),
         new THREE.MeshPhongMaterial());
 
     mercury.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurymap.jpg');
     mercury.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/mercurybump.jpg');
     mercury.material.bumpScale = 0.05;
 
-    var orbitRadius = 8;
+    var orbitRadius = 15;
 
     mercury.position.set(orbitRadius, 0, 0);
     mercury.rotation.x = Math.PI / 2;
@@ -521,8 +524,8 @@ function Mercury(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        mercury.position.x = Math.cos(time * 0.15) * orbitRadius;
-        mercury.position.y = Math.sin(time * 0.15) * orbitRadius;
+        mercury.position.x = Math.cos(time * 0.6) * orbitRadius;
+        mercury.position.y = Math.sin(time * 0.6) * orbitRadius;
         mercury.rotation.y = time * 0.45;
     }
 
@@ -588,14 +591,14 @@ __webpack_require__.r(__webpack_exports__);
 function Neptune(scene) {
 
     var neptune = new THREE.Mesh(
-        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.SphereGeometry(4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     neptune.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/neptunemap.jpg');
     // neptune.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // neptune.material.bumpScale = 0.05;
 
-    var orbitRadius = 110;
+    var orbitRadius = 117;
 
     neptune.position.set(orbitRadius, 0, 0);
     neptune.rotation.x = Math.PI / 2;
@@ -611,8 +614,8 @@ function Neptune(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        neptune.position.x = Math.cos(time * 0.15) * orbitRadius;
-        neptune.position.y = Math.sin(time * 0.15) * orbitRadius;
+        neptune.position.x = Math.cos(time * 0.028) * orbitRadius;
+        neptune.position.y = Math.sin(time * 0.028) * orbitRadius;
         neptune.rotation.y = time * 0.45;
     }
 
@@ -634,14 +637,14 @@ __webpack_require__.r(__webpack_exports__);
 function Pluto(scene) {
 
     var pluto = new THREE.Mesh(
-        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.SphereGeometry(1.5, 30, 30),
         new THREE.MeshPhongMaterial());
 
     pluto.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/plutomap1k.jpg');
     pluto.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/plutobump1k.jpg');
     pluto.material.bumpScale = 0.05;
 
-    var orbitRadius = 130;
+    var orbitRadius = 135;
 
     pluto.position.set(orbitRadius, 0, 0);
     pluto.rotation.x = Math.PI / 2;
@@ -657,8 +660,8 @@ function Pluto(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        pluto.position.x = Math.cos(time * 0.15) * orbitRadius;
-        pluto.position.y = Math.sin(time * 0.15) * orbitRadius;
+        pluto.position.x = Math.cos(time * 0.02) * orbitRadius;
+        pluto.position.y = Math.sin(time * 0.02) * orbitRadius;
         pluto.rotation.y = time * 0.45;
     }
 
@@ -680,14 +683,14 @@ __webpack_require__.r(__webpack_exports__);
 function Saturn(scene) {
 
     var saturn = new THREE.Mesh(
-        new THREE.SphereGeometry(1.5, 30, 30),
+        new THREE.SphereGeometry(5, 30, 30),
         new THREE.MeshPhongMaterial());
 
     saturn.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnmap.jpg');
     // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // saturn.material.bumpScale = 0.05;
 
-    var orbitRadius = 70;
+    var orbitRadius = 85;
 
     saturn.position.set(orbitRadius, 0, 0);
     saturn.rotation.x = Math.PI / 2;
@@ -701,7 +704,7 @@ function Saturn(scene) {
 
     // SATURN'S RINGS
     var rings = new THREE.Mesh(
-        new THREE.RingGeometry(3, 5, 30),
+        new THREE.RingGeometry(6.4, 8, 30),
         new THREE.MeshPhongMaterial());
     
     rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/saturnringcolor.jpg');
@@ -715,8 +718,8 @@ function Saturn(scene) {
     saturn.children[0].rotation.x = Math.PI / 2;
 
     this.update = function (time) {
-        saturn.position.x = Math.cos(time * 0.15) * orbitRadius;
-        saturn.position.y = Math.sin(time * 0.15) * orbitRadius;
+        saturn.position.x = Math.cos(time * 0.045) * orbitRadius;
+        saturn.position.y = Math.sin(time * 0.045) * orbitRadius;
         saturn.rotation.y = time * 0.45;
     };
 
@@ -772,7 +775,7 @@ __webpack_require__.r(__webpack_exports__);
 // import * as THREE from 'three';
 function Sun(scene) {
 
-    var radius = 2;
+    var radius = 7;
     var mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 30, 30), new THREE.MeshStandardMaterial({ flatShading: false }));
     // mesh.material.color.set("#FDB813");
     mesh.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/sunmap.jpg');
@@ -806,14 +809,14 @@ __webpack_require__.r(__webpack_exports__);
 function Uranus(scene) {
 
     var uranus = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 30, 30),
+        new THREE.SphereGeometry(4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     uranus.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusmap.jpg');
     // saturn.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
     // saturn.material.bumpScale = 0.05;
 
-    var orbitRadius = 90;
+    var orbitRadius = 100;
 
     uranus.position.set(orbitRadius, 0, 0);
     uranus.rotation.x = Math.PI / 2;
@@ -827,7 +830,7 @@ function Uranus(scene) {
 
     // SATURN'S RINGS
     var rings = new THREE.Mesh(
-        new THREE.RingGeometry(3.5, 3.8, 30),
+        new THREE.RingGeometry(4.8, 5.3, 30),
         new THREE.MeshPhongMaterial());
 
     rings.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/uranusringcolour.jpg');
@@ -841,8 +844,8 @@ function Uranus(scene) {
     uranus.children[0].rotation.x = Math.PI / 2;
 
     this.update = function (time) {
-        uranus.position.x = Math.cos(time * 0.15) * orbitRadius;
-        uranus.position.y = Math.sin(time * 0.15) * orbitRadius;
+        uranus.position.x = Math.cos(time * 0.038) * orbitRadius;
+        uranus.position.y = Math.sin(time * 0.038) * orbitRadius;
         uranus.rotation.y = time * 0.45;
     };
 
@@ -864,14 +867,14 @@ __webpack_require__.r(__webpack_exports__);
 function Venus(scene) {
 
     var venus = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(3.2, 30, 30),
         new THREE.MeshPhongMaterial());
 
     venus.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/venusmap.jpg');
     venus.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/venusbump.jpg');
     venus.material.bumpScale = 0.05;
 
-    var orbitRadius = 15;
+    var orbitRadius = 25;
 
     venus.position.set(orbitRadius, 0, 0);
     venus.rotation.x = Math.PI / 2;
@@ -887,8 +890,8 @@ function Venus(scene) {
     scene.add(line);
 
     this.update = function (time) {
-        venus.position.x = Math.cos(time * 0.15) * orbitRadius;
-        venus.position.y = Math.sin(time * 0.15) * orbitRadius;
+        venus.position.x = Math.cos(time * 0.25) * orbitRadius;
+        venus.position.y = Math.sin(time * 0.25) * orbitRadius;
         venus.rotation.y = time * 0.45;
     }
 

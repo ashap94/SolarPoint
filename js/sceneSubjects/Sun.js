@@ -1,7 +1,7 @@
 // import * as THREE from 'three';
 function Sun(scene) {
 
-    var radius = 2;
+    var radius = 7;
     var mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 30, 30), new THREE.MeshStandardMaterial({ flatShading: false }));
     // mesh.material.color.set("#FDB813");
     mesh.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/sunmap.jpg');

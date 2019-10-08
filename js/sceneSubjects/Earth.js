@@ -3,7 +3,7 @@
 function Earth(scene) {
 
     var earth = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 30, 30), 
+        new THREE.SphereGeometry(3.5, 30, 30), 
         new THREE.MeshPhongMaterial());
 
     // earth.material.color.set('rgb(30,230,55)');
@@ -13,8 +13,8 @@ function Earth(scene) {
     // earth.material.specularMap = THREE.ImageUtils.loadTexture('images/earthspec1k.jpg');
     // earth.material.specular = new THREE.Color('grey');
     
-    var orbitRadius = 40;
-    var orbitRadiusMoon = 5;
+    var orbitRadius = 45;
+    var orbitRadiusMoon = 5.8;
 
     earth.position.set(orbitRadius, 0, 0);
     // earth.rotation.y = (Math.PI / 2);
@@ -31,7 +31,7 @@ function Earth(scene) {
     // MOON Construction 
 
     var moon = new THREE.Mesh(
-        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.SphereGeometry(1.4, 30, 30),
         new THREE.MeshPhongMaterial());
 
     moon.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/moonmap1k.jpg');
@@ -59,6 +59,8 @@ function Earth(scene) {
 
     // var moon = new Moon(scene);
 
+    moon.rotation.x = -(Math.PI / 2);
+
     earth.add( moon );
     // earth.add( lineMoon);
 
@@ -77,7 +79,7 @@ function Earth(scene) {
         earth.position.y = Math.sin(time * 0.15) * orbitRadius ;
         earth.rotation.y = time * 0.45;
 
-        earth.children[0].position.x = Math.cos(time * 0.35) * orbitRadiusMoon;
+        earth.children[0].position.z = Math.cos(time * 0.35) * orbitRadiusMoon;
         earth.children[0].position.y = Math.sin(time * 0.35) * orbitRadiusMoon;
         earth.children[0].rotation.y = time * 0.45;
 

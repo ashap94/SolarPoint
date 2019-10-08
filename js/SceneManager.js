@@ -34,7 +34,7 @@ function SceneManager(canvas) {
     const sceneSubjects = createSceneSubjects(scene);
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     camera.position.z = 10;
-    controls.minDistance = 5;
+    controls.minDistance = 8;
     controls.maxDistance = 1000;
 
     function buildScene() {
