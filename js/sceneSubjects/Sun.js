@@ -1,22 +1,24 @@
 // import * as THREE from 'three';
 function Sun(scene) {
+  var radius = 7;
+  var mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(radius, 30, 30),
+    new THREE.MeshStandardMaterial({ flatShading: false })
+  );
+  // mesh.material.color.set("#FDB813");
+  mesh.material.map = THREE.ImageUtils.loadTexture(
+    "js/libs/threex.planets-master/images/Map_of_the_full_sun.jpg"
+  );
+  mesh.position.set(0, 0, 0);
 
-    var radius = 7;
-    var mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 30, 30), new THREE.MeshStandardMaterial({ flatShading: false }));
-    // mesh.material.color.set("#FDB813");
-    mesh.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/sunmap.jpg');
+  scene.add(mesh);
 
-    mesh.position.set(0, 0, 0);
+  this.update = function(time) {
+    const scale = Math.sin(time);
 
-    scene.add(mesh);
-
-    this.update = function (time) {
-        const scale = Math.sin(time);
-        
-
-        // mesh.scale.set(scale, scale, scale);
-        // mesh.position.set(scale)
-    }
+    // mesh.scale.set(scale, scale, scale);
+    // mesh.position.set(scale)
+  };
 }
 
 export default Sun;
