@@ -7,7 +7,7 @@ function Sun(scene) {
   );
   // mesh.material.color.set("#FDB813");
   mesh.material.map = THREE.ImageUtils.loadTexture(
-    "js/libs/threex.planets-master/images/Map_of_the_full_sun.jpg"
+    "js/libs/threex.planets-master/images/sunmapUpdate-min.jpg"
   );
   mesh.position.set(0, 0, 0);
 
