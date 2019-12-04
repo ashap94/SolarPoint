@@ -3,7 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>My first three.js app</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/main.css" />
+
     <script type="text/javascript" src="build/dat.gui.min.js"></script>
     <style>
       body {
@@ -13,10 +22,57 @@
   </head>
 
   <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas"> </canvas>
     <script src="js/libs/three.js"></script>
     <script src="js/libs/OrbitControls.js"></script>
     <script src="./src/bundle.js"></script>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Instructions</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>SolarPoint</h1>
+        <h4>Instructions</h4>
+        <ul>
+          <li>Left mouse to orbit camera around Solar System</li>
+          <li>Right mouse to move camera's location</li>
+          <li>Use slider to adjust orbital and rotation speed of planets</li>
+          <!-- <li>Click on a planet for info</li> -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function() {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
 
     <!-- <script src="js/libs/threex.planets-master/images/galaxy_starfield.jpg"></script> -->
 

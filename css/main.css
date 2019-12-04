@@ -1,7 +1,88 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    
-    overflow: hidden;
-    margin: 0;
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  margin: 0;
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+#myBtn {
+  position: absolute;
+  left: 2vw;
+  top: 3vh;
+  border: 5px rgb(55, 162, 212);
+  border-radius: 10px;
+  width: 125px;
+  height: 30px;
+  background: rgb(55, 162, 212);
+  font-family: "Orbitron", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* 
+    font-family: 'Audiowide', cursive;
+    font-family: 'Orbitron', sans-serif;
+ */
+
+#myBtn:focus {
+  outline: 0;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  position: absolute;
+  padding: 20px;
+  border: 6px solid #888;
+  border-radius: 20px;
+  width: 500px;
+  height: 450px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(https://spacenews.com/wp-content/uploads/2018/05/24359364107_152b0152ff_k-879x485.jpg);
+  background-size: cover;
+  font-family: "Audiowide", cursive;
+  color: red;
+}
+
+.modal-content li {
+  margin-bottom: 10px;
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  left: 91%;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(55, 162, 212);
+  text-decoration: none;
+  cursor: pointer;
 }
