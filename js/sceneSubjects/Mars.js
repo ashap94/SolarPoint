@@ -1,34 +1,41 @@
+import { guiControls } from "../../main";
+
 function Mars(scene) {
+  var mars = new THREE.Mesh(
+    new THREE.SphereGeometry(2, 30, 30),
+    new THREE.MeshPhongMaterial()
+  );
 
-    var mars = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 30, 30),
-        new THREE.MeshPhongMaterial());
+  mars.material.map = THREE.ImageUtils.loadTexture(
+    "js/libs/threex.planets-master/images/marsmap1k.jpg"
+  );
+  mars.material.bumpMap = THREE.ImageUtils.loadTexture(
+    "js/libs/threex.planets-master/images/marsbump1k.jpg"
+  );
+  mars.material.bumpScale = 0.05;
 
-    mars.material.map = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsmap1k.jpg');
-    mars.material.bumpMap = THREE.ImageUtils.loadTexture('js/libs/threex.planets-master/images/marsbump1k.jpg');
-    mars.material.bumpScale = 0.05;
+  var orbitRadius = 55;
 
-    var orbitRadius = 55;
+  mars.position.set(orbitRadius, 0, 0);
+  mars.rotation.x = Math.PI / 2;
 
-    mars.position.set(orbitRadius, 0, 0);
-    mars.rotation.x = Math.PI / 2;
+  var material = new THREE.LineBasicMaterial({ color: "aqua" });
+  var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
+  geometry.vertices.shift();
+  var line = new THREE.Line(geometry, material);
+  line.position.set(0, 0, 0);
+  // console.log(mars);
 
-    var material = new THREE.LineBasicMaterial({ color: 'aqua' });
-    var geometry = new THREE.CircleGeometry(orbitRadius, 1000);
-    geometry.vertices.shift();
-    var line = new THREE.Line(geometry, material);
-    line.position.set(0, 0, 0);
-    // console.log(mars);
+  scene.add(mars);
+  scene.add(line);
 
-    scene.add(mars);
-    scene.add(line);
-
-    this.update = function (time) {
-        mars.position.x = Math.cos(time * 0.09) * orbitRadius;
-        mars.position.y = Math.sin(time * 0.09) * orbitRadius;
-        mars.rotation.y = time * 0.45;
-    }
-
+  this.update = function(time) {
+    mars.position.x =
+      Math.cos(time * 0.09 * guiControls.orbitalSpeed) * orbitRadius;
+    mars.position.y =
+      Math.sin(time * 0.09 * guiControls.orbitalSpeed) * orbitRadius;
+    mars.rotation.y = time * 0.45 * guiControls.orbitalSpeed;
+  };
 }
 
 export default Mars;

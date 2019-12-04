@@ -1,4 +1,6 @@
 // import * as THREE from 'three';
+import { guiControls } from "../../main";
+
 function Sun(scene) {
   var radius = 7;
   var mesh = new THREE.Mesh(
@@ -15,7 +17,7 @@ function Sun(scene) {
 
   this.update = function(time) {
     const scale = Math.sin(time);
-
+    mesh.rotation.z = time * 0.15 * guiControls.orbitalSpeed;
     // mesh.scale.set(scale, scale, scale);
     // mesh.position.set(scale)
   };
