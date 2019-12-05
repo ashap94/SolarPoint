@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Mercury(scene) {
+function Mercury(scene, domEvents) {
   var mercury = new THREE.Mesh(
     new THREE.SphereGeometry(1.5, 30, 30),
     new THREE.MeshPhongMaterial()

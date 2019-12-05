@@ -29,7 +29,9 @@ function SceneManager(canvas) {
   const scene = buildScene();
   const renderer = buildRender(screenDimensions);
   const camera = buildCamera(screenDimensions);
-  const sceneSubjects = createSceneSubjects(scene);
+
+  const domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+  const sceneSubjects = createSceneSubjects(scene, domEvents);
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
   camera.position.z = 200;
   controls.minDistance = 15;
@@ -111,20 +113,20 @@ function SceneManager(canvas) {
   //     scene.add(skybox);
   // }
 
-  function createSceneSubjects(scene) {
+  function createSceneSubjects(scene, domEvents) {
     const sceneSubjects = [
       new GeneralLights(scene),
       new StarField(scene),
-      new Sun(scene),
-      new Earth(scene),
-      new Mercury(scene),
-      new Venus(scene),
-      new Mars(scene),
-      new Jupiter(scene),
-      new Saturn(scene),
-      new Uranus(scene),
-      new Neptune(scene),
-      new Pluto(scene)
+      new Sun(scene, domEvents),
+      new Earth(scene, domEvents),
+      new Mercury(scene, domEvents),
+      new Venus(scene, domEvents),
+      new Mars(scene, domEvents),
+      new Jupiter(scene, domEvents),
+      new Saturn(scene, domEvents),
+      new Uranus(scene, domEvents),
+      new Neptune(scene, domEvents),
+      new Pluto(scene, domEvents)
     ];
 
     // THREE.sceneSubjects[3].add(sceneSubjects[4]);

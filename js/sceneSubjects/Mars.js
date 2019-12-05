@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Mars(scene) {
+function Mars(scene, domEvents) {
   var mars = new THREE.Mesh(
     new THREE.SphereGeometry(2, 30, 30),
     new THREE.MeshPhongMaterial()

@@ -80,6 +80,14 @@ body {
   font-weight: bold;
 }
 
+/* #three-js {
+  cursor: default;
+} */
+
+#canvas {
+  cursor: default;
+}
+
 .close:hover,
 .close:focus {
   color: rgb(55, 162, 212);

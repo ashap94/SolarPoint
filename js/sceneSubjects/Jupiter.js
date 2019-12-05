@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Jupiter(scene) {
+function Jupiter(scene, domEvents) {
   var jupiter = new THREE.Mesh(
     new THREE.SphereGeometry(6, 30, 30),
     new THREE.MeshPhongMaterial()

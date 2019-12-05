@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Saturn(scene) {
+function Saturn(scene, domEvents) {
   var saturn = new THREE.Mesh(
     new THREE.SphereGeometry(5, 30, 30),
     new THREE.MeshPhongMaterial()

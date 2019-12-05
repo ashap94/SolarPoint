@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Pluto(scene) {
+function Pluto(scene, domEvents) {
   var pluto = new THREE.Mesh(
     new THREE.SphereGeometry(1.5, 30, 30),
     new THREE.MeshPhongMaterial()

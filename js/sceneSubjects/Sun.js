@@ -1,7 +1,7 @@
 // import * as THREE from 'three';
 import { guiControls } from "../../main";
 
-function Sun(scene) {
+function Sun(scene, domEvents) {
   var radius = 7;
   var mesh = new THREE.Mesh(
     new THREE.SphereGeometry(radius, 30, 30),

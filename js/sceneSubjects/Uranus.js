@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Uranus(scene) {
+function Uranus(scene, domEvents) {
   var uranus = new THREE.Mesh(
     new THREE.SphereGeometry(4, 30, 30),
     new THREE.MeshPhongMaterial()

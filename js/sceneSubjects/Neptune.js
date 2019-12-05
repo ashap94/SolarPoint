@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Neptune(scene) {
+function Neptune(scene, domEvents) {
   var neptune = new THREE.Mesh(
     new THREE.SphereGeometry(4, 30, 30),
     new THREE.MeshPhongMaterial()

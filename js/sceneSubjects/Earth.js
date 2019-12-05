@@ -2,12 +2,30 @@
 // import Moon from "./Moon";
 
 import { guiControls } from "../../main";
+// import { domEvents } from "../SceneManager";
 
-function Earth(scene) {
+function Earth(scene, domEvents) {
   var earth = new THREE.Mesh(
     new THREE.SphereGeometry(3.5, 30, 30),
     new THREE.MeshPhongMaterial()
   );
+  // var materialWireframe = new THREE.MeshPhongMaterial({ color: "red", wireframe: true })
+
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(4, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const earthHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  // var earthHighlight = new THREE.Mesh(
+  //   new THREE.SphereGeometry(4, 30, 30),
+  //   highlightMaterial
+  // );
+  // earthHighlight.material.color.set("rgba(255,0,0,1)");
 
   // earth.material.color.set('rgb(30,230,55)');
   earth.material.map = THREE.ImageUtils.loadTexture(
@@ -75,6 +93,21 @@ function Earth(scene) {
 
   scene.add(earth);
   scene.add(line);
+  earthHighlight.material.visible = false;
+  scene.add(earthHighlight);
+  var threeElement = document.getElementById("canvas");
+
+  domEvents.addEventListener(earth, "mouseover", e => {
+    threeElement.style.cursor = "pointer";
+    earthHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(earth, "mouseout", e => {
+    threeElement.style.cursor = "default";
+    earthHighlight.material.visible = false;
+  });
+
+  console.log("HERE'S EARTHHIGHLIGHT's PROPERTIES:  ", earthHighlight);
 
   // console.log(earth);
 
@@ -82,7 +115,13 @@ function Earth(scene) {
 
   this.update = function(time) {
     const scale = Math.sin(time);
-
+    // if (earthHighlight.parent && earthHighlight.parent === scene) {
+    earthHighlight.position.x =
+      Math.cos(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
+    earthHighlight.position.y =
+      Math.sin(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
+    // earthHighlight.rotation.y = time * 0.45 * guiControls.orbitalSpeed;
+    // }
     // earth.position.set(Math.cos(time) * orbitRadius, Math.sin(time) * orbitRadius );
     earth.position.x =
       Math.cos(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;

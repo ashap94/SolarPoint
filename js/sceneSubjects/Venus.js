@@ -1,6 +1,6 @@
 import { guiControls } from "../../main";
 
-function Venus(scene) {
+function Venus(scene, domEvents) {
   var venus = new THREE.Mesh(
     new THREE.SphereGeometry(3.2, 30, 30),
     new THREE.MeshPhongMaterial()
