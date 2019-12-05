@@ -14,7 +14,7 @@ body {
   font-size: 25px;
   color: aqua;
   top: 2%;
-  left: 40%;
+  left: 42%;
 }
 
 /* The Modal (background) */
@@ -61,19 +61,51 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #fefefe;
-  position: absolute;
+  /* position: absolute; */
   padding: 20px;
   border: 6px solid #888;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 500px;
   height: 450px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url(https://spacenews.com/wp-content/uploads/2018/05/24359364107_152b0152ff_k-879x485.jpg);
+  /* left: 50%; */
+  /* top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  background-image: url("../images/solar_point_main.jpg");
   background-size: cover;
   font-family: "Audiowide", cursive;
-  color: red;
+  color: aqua;
+  /* overflow-y: auto; */
+  overflow: scroll;
+}
+
+#earth-content {
+  background-image: url("../images/earth.jpg");
+  color: chartreuse;
+}
+
+#sun-content {
+  background-image: url("../images/sun.jpg");
+  color: chartreuse;
+}
+
+#sun-title {
+  left: 45.5%;
+}
+
+.modal-content ul {
+  padding-right: 30px;
+}
+
+.modal-box {
+  position: absolute;
+  width: 500px;
+  height: 450px;
+  /* border: 6px solid #888; */
+  /* border-radius: 20px; */
+  left: 46%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
 }
 
 .modal-content li {
@@ -83,7 +115,8 @@ body {
 /* The Close Button */
 .close {
   position: absolute;
-  left: 91%;
+  left: 100%;
+  top: 4%;
   color: #aaa;
   float: right;
   font-size: 28px;

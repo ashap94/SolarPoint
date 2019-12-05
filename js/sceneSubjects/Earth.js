@@ -98,6 +98,7 @@ function Earth(scene, domEvents) {
   scene.add(earthHighlight);
   var threeElement = document.getElementById("canvas");
   var planetTitle = document.getElementById("earth-title");
+  var earthModal = document.getElementById("earth-modal");
   console.log("HERE'S planetTitle  :", planetTitle);
 
   domEvents.addEventListener(earth, "mouseover", e => {
@@ -110,6 +111,10 @@ function Earth(scene, domEvents) {
     planetTitle.style.display = "none";
     threeElement.style.cursor = "default";
     earthHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(earth, "click", e => {
+    earthModal.style.display = "block";
   });
 
   console.log("HERE'S EARTHHIGHLIGHT's PROPERTIES:  ", earthHighlight);

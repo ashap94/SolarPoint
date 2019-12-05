@@ -15,6 +15,39 @@ function Sun(scene, domEvents) {
 
   scene.add(mesh);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(7.5, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const sunHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  sunHighlight.material.visible = false;
+  scene.add(sunHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("sun-title");
+  var earthModal = document.getElementById("sun-modal");
+  console.log("HERE'S planetTitle  :", planetTitle);
+
+  domEvents.addEventListener(mesh, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    sunHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(mesh, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    sunHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(mesh, "click", e => {
+    earthModal.style.display = "block";
+  });
+
   this.update = function(time) {
     const scale = Math.sin(time);
     mesh.rotation.z = time * 0.15 * guiControls.orbitalSpeed;
