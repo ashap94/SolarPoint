@@ -11,16 +11,6 @@ function Earth(scene, domEvents) {
   );
   // var materialWireframe = new THREE.MeshPhongMaterial({ color: "red", wireframe: true })
 
-  const wireframeGeometry = new THREE.WireframeGeometry(
-    new THREE.SphereGeometry(4, 30, 30)
-  );
-  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
-
-  const earthHighlight = new THREE.LineSegments(
-    wireframeGeometry,
-    wireframeMaterial
-  );
-
   // var earthHighlight = new THREE.Mesh(
   //   new THREE.SphereGeometry(4, 30, 30),
   //   highlightMaterial
@@ -93,16 +83,31 @@ function Earth(scene, domEvents) {
 
   scene.add(earth);
   scene.add(line);
+
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(4, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const earthHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
   earthHighlight.material.visible = false;
   scene.add(earthHighlight);
   var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("earth-title");
+  console.log("HERE'S planetTitle  :", planetTitle);
 
   domEvents.addEventListener(earth, "mouseover", e => {
+    planetTitle.style.display = "block";
     threeElement.style.cursor = "pointer";
     earthHighlight.material.visible = true;
   });
 
   domEvents.addEventListener(earth, "mouseout", e => {
+    planetTitle.style.display = "none";
     threeElement.style.cursor = "default";
     earthHighlight.material.visible = false;
   });

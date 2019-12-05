@@ -23,6 +23,28 @@
 
   <body>
     <canvas id="canvas"> </canvas>
+
+    <!-- EARTH NAME AND MODAL INFO -->
+
+    <div class="planet-name-display" id="earth-title">
+      <h1>Earth</h1>
+    </div>
+
+    <div id="earth-modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>SolarPoint</h1>
+        <h4>Instructions</h4>
+        <ul>
+          <li>Left mouse to orbit camera around Solar System</li>
+          <li>Right mouse to move camera's location</li>
+          <li>Use slider to adjust orbital and rotation speed of planets</li>
+          <!-- <li>Click on a planet for info</li> -->
+        </ul>
+      </div>
+    </div>
+
     <!-- <div id="three-js"> -->
     <script src="js/libs/three.js"></script>
     <script src="js/libs/OrbitControls.js"></script>
