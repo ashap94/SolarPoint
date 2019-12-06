@@ -18,9 +18,8 @@ body {
 }
 
 /* The Modal (background) */
-/**/
 .modal {
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -30,6 +29,10 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+#myModal {
+  display: block;
 }
 
 #myBtn {
@@ -81,16 +84,61 @@ body {
 
 #earth-content {
   background-image: url("../images/earth.jpg");
-  color: chartreuse;
+  color: snow;
 }
 
 #sun-content {
   background-image: url("../images/sun.jpg");
-  color: chartreuse;
+  color: aliceblue;
 }
 
 #sun-title {
   left: 45.5%;
+}
+
+#mercury-title {
+  left: 40%;
+}
+
+#mercury-content {
+  background-image: url("../images/mercury208.jpg");
+  color: yellow;
+}
+
+#venus-title {
+  left: 43%;
+}
+
+#venus-content {
+  background-image: url("../images/venus.jpg");
+  color: darkorange;
+}
+
+#moon-title {
+  left: 43%;
+}
+
+#moon-content {
+  background-image: url("../images/moon.jpg");
+  color: darkorange;
+}
+
+#mars-title {
+  left: 43%;
+}
+
+#mars-content {
+  background-image: url("../images/mars-min.png");
+  color: yellow;
+}
+
+#jupiter-title {
+  left: 43%;
+}
+
+#jupiter-content {
+  background-image: url("../images/jupiter-new-pic.jpg");
+  color: darkorange;
 }
 
 .modal-content ul {

@@ -29,7 +29,45 @@ function Venus(scene, domEvents) {
   scene.add(venus);
   scene.add(line);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(3.9, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const venusHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  venusHighlight.material.visible = false;
+  // scene.add(venusHighlight);
+  venus.add(venusHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("venus-title");
+  var planetModal = document.getElementById("venus-modal");
+
+  domEvents.addEventListener(venus, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    venusHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(venus, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    venusHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(venus, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
+    // venusHighlight.position.x =
+    //   Math.cos(time * 0.25 * guiControls.orbitalSpeed) * orbitRadius;
+    // venusHighlight.position.y =
+    //   Math.sin(time * 0.25 * guiControls.orbitalSpeed) * orbitRadius;
+
     venus.position.x =
       Math.cos(time * 0.25 * guiControls.orbitalSpeed) * orbitRadius;
     venus.position.y =

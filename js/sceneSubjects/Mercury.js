@@ -29,7 +29,46 @@ function Mercury(scene, domEvents) {
   scene.add(mercury);
   scene.add(line);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(3, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const mercuryHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  mercuryHighlight.material.visible = false;
+  // scene.add(mercuryHighlight);
+  mercury.add(mercuryHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("mercury-title");
+  var mercuryModal = document.getElementById("mercury-modal");
+  console.log("HERE'S planetTitle  :", planetTitle);
+
+  domEvents.addEventListener(mercury, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    mercuryHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(mercury, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    mercuryHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(mercury, "click", e => {
+    mercuryModal.style.display = "block";
+  });
+
   this.update = function(time) {
+    // mercuryHighlight.position.x =
+    //   Math.cos(time * 0.6 * guiControls.orbitalSpeed) * orbitRadius;
+    // mercuryHighlight.position.y =
+    //   Math.sin(time * 0.6 * guiControls.orbitalSpeed) * orbitRadius;
+
     mercury.position.x =
       Math.cos(time * 0.6 * guiControls.orbitalSpeed) * orbitRadius;
     mercury.position.y =

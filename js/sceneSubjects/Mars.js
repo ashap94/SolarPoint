@@ -29,6 +29,39 @@ function Mars(scene, domEvents) {
   scene.add(mars);
   scene.add(line);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(3.5, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const marsHighLight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  marsHighLight.material.visible = false;
+  // scene.add(marsHighLight);
+  mars.add(marsHighLight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("mars-title");
+  var planetModal = document.getElementById("mars-modal");
+
+  domEvents.addEventListener(mars, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    marsHighLight.material.visible = true;
+  });
+
+  domEvents.addEventListener(mars, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    marsHighLight.material.visible = false;
+  });
+
+  domEvents.addEventListener(mars, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
     mars.position.x =
       Math.cos(time * 0.09 * guiControls.orbitalSpeed) * orbitRadius;

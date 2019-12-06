@@ -26,7 +26,8 @@ function Sun(scene, domEvents) {
   );
 
   sunHighlight.material.visible = false;
-  scene.add(sunHighlight);
+  // scene.add(sunHighlight);
+  mesh.add(sunHighlight);
   var threeElement = document.getElementById("canvas");
   var planetTitle = document.getElementById("sun-title");
   var earthModal = document.getElementById("sun-modal");

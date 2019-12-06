@@ -44,7 +44,7 @@ function Earth(scene, domEvents) {
   // MOON Construction
 
   var moon = new THREE.Mesh(
-    new THREE.SphereGeometry(1.4, 30, 30),
+    new THREE.SphereGeometry(1.8, 30, 30),
     new THREE.MeshPhongMaterial()
   );
 
@@ -95,7 +95,8 @@ function Earth(scene, domEvents) {
   );
 
   earthHighlight.material.visible = false;
-  scene.add(earthHighlight);
+  // scene.add(earthHighlight);
+  earth.add(earthHighlight);
   var threeElement = document.getElementById("canvas");
   var planetTitle = document.getElementById("earth-title");
   var earthModal = document.getElementById("earth-modal");
@@ -117,6 +118,42 @@ function Earth(scene, domEvents) {
     earthModal.style.display = "block";
   });
 
+  // MOON HIGHLIGHT AND LISTENING EVENTS
+
+  const moonframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(2.8, 30, 30)
+  );
+  const moonframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const moonHighlight = new THREE.LineSegments(
+    moonframeGeometry,
+    moonframeMaterial
+  );
+
+  moonHighlight.material.visible = false;
+  // scene.add(moonHighlight);
+  moon.add(moonHighlight);
+
+  var MoonThreeElement = document.getElementById("canvas");
+  var MoonPlanetTitle = document.getElementById("moon-title");
+  var MoonPlanetModal = document.getElementById("moon-modal");
+
+  domEvents.addEventListener(moon, "mouseover", e => {
+    MoonPlanetTitle.style.display = "block";
+    MoonThreeElement.style.cursor = "pointer";
+    moonHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(moon, "mouseout", e => {
+    MoonPlanetTitle.style.display = "none";
+    MoonThreeElement.style.cursor = "default";
+    moonHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(moon, "click", e => {
+    MoonPlanetModal.style.display = "block";
+  });
+
   console.log("HERE'S EARTHHIGHLIGHT's PROPERTIES:  ", earthHighlight);
 
   // console.log(earth);
@@ -126,10 +163,10 @@ function Earth(scene, domEvents) {
   this.update = function(time) {
     const scale = Math.sin(time);
     // if (earthHighlight.parent && earthHighlight.parent === scene) {
-    earthHighlight.position.x =
-      Math.cos(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
-    earthHighlight.position.y =
-      Math.sin(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
+    // earthHighlight.position.x =
+    //   Math.cos(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
+    // earthHighlight.position.y =
+    //   Math.sin(time * 0.15 * guiControls.orbitalSpeed) * orbitRadius;
     // earthHighlight.rotation.y = time * 0.45 * guiControls.orbitalSpeed;
     // }
     // earth.position.set(Math.cos(time) * orbitRadius, Math.sin(time) * orbitRadius );
@@ -145,6 +182,11 @@ function Earth(scene, domEvents) {
     earth.children[0].position.y =
       Math.sin(time * 0.35 * guiControls.orbitalSpeed) * orbitRadiusMoon;
     earth.children[0].rotation.y = time * 0.45 * guiControls.orbitalSpeed;
+
+    // earth.children[1].position.z =
+    //   Math.cos(time * 0.35 * guiControls.orbitalSpeed) * orbitRadiusMoon;
+    // earth.children[1].position.y =
+    //   Math.sin(time * 0.35 * guiControls.orbitalSpeed) * orbitRadiusMoon;
 
     // earth.children[1].rotation.y = -(time * 0.45);
   };

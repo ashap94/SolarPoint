@@ -27,6 +27,39 @@ function Jupiter(scene, domEvents) {
   scene.add(jupiter);
   scene.add(line);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(6.9, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const jupiterHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  jupiterHighlight.material.visible = false;
+  // scene.add(jupiterHighlight);
+  jupiter.add(jupiterHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("jupiter-title");
+  var planetModal = document.getElementById("jupiter-modal");
+
+  domEvents.addEventListener(jupiter, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    jupiterHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(jupiter, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    jupiterHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(jupiter, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
     jupiter.position.x =
       Math.cos(time * 0.05 * guiControls.orbitalSpeed) * orbitRadius;
