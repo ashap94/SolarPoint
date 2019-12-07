@@ -42,6 +42,39 @@ function Saturn(scene, domEvents) {
 
   saturn.children[0].rotation.x = Math.PI / 2;
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(8.0, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const saturnHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  saturnHighlight.material.visible = false;
+  // scene.add(saturnHighlight);
+  saturn.add(saturnHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("saturn-title");
+  var planetModal = document.getElementById("saturn-modal");
+
+  domEvents.addEventListener(saturn, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    saturnHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(saturn, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    saturnHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(saturn, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
     saturn.position.x =
       Math.cos(time * 0.045 * guiControls.orbitalSpeed) * orbitRadius;

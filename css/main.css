@@ -141,6 +141,42 @@ body {
   color: darkorange;
 }
 
+#saturn-title {
+  left: 43%;
+}
+
+#saturn-content {
+  background-image: url("../images/saturn.jpg");
+  color: darkorange;
+}
+
+#uranus-title {
+  left: 43%;
+}
+
+#uranus-content {
+  background-image: url("../images/uranus.jpg");
+  color: darkorange;
+}
+
+#neptune-title {
+  left: 43%;
+}
+
+#neptune-content {
+  background-image: url("../images/neptune.jpg");
+  color: darkorange;
+}
+
+#pluto-title {
+  left: 43%;
+}
+
+#pluto-content {
+  background-image: url("../images/pluto.jpg");
+  color: darkorange;
+}
+
 .modal-content ul {
   padding-right: 30px;
 }

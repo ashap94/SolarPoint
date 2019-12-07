@@ -42,6 +42,39 @@ function Uranus(scene, domEvents) {
 
   uranus.children[0].rotation.x = Math.PI / 2;
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(5.7, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const uranusHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  uranusHighlight.material.visible = false;
+  // scene.add(uranusHighlight);
+  uranus.add(uranusHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("uranus-title");
+  var planetModal = document.getElementById("uranus-modal");
+
+  domEvents.addEventListener(uranus, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    uranusHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(uranus, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    uranusHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(uranus, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
     uranus.position.x =
       Math.cos(time * 0.038 * guiControls.orbitalSpeed) * orbitRadius;

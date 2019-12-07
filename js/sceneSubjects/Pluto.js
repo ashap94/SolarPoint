@@ -29,6 +29,39 @@ function Pluto(scene, domEvents) {
   scene.add(pluto);
   scene.add(line);
 
+  const wireframeGeometry = new THREE.WireframeGeometry(
+    new THREE.SphereGeometry(2.3, 30, 30)
+  );
+  const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfc0d1b });
+
+  const plutoHighlight = new THREE.LineSegments(
+    wireframeGeometry,
+    wireframeMaterial
+  );
+
+  plutoHighlight.material.visible = false;
+  // scene.add(plutoHighlight);
+  pluto.add(plutoHighlight);
+  var threeElement = document.getElementById("canvas");
+  var planetTitle = document.getElementById("pluto-title");
+  var planetModal = document.getElementById("pluto-modal");
+
+  domEvents.addEventListener(pluto, "mouseover", e => {
+    planetTitle.style.display = "block";
+    threeElement.style.cursor = "pointer";
+    plutoHighlight.material.visible = true;
+  });
+
+  domEvents.addEventListener(pluto, "mouseout", e => {
+    planetTitle.style.display = "none";
+    threeElement.style.cursor = "default";
+    plutoHighlight.material.visible = false;
+  });
+
+  domEvents.addEventListener(pluto, "click", e => {
+    planetModal.style.display = "block";
+  });
+
   this.update = function(time) {
     pluto.position.x =
       Math.cos(time * 0.02 * guiControls.orbitalSpeed) * orbitRadius;
