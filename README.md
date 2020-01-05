@@ -82,3 +82,42 @@ const wireframeGeometry = new THREE.WireframeGeometry(
   
  ...
 ```
+
+![solarpoint_gui_showcase](https://user-images.githubusercontent.com/52110753/71788018-707bfc00-2fd3-11ea-9fde-c50ea33096d6.gif)
+
+<p>Made use of "dat.gui.min.js" library to create a GUI with a slider that will allow the user to dynamically adjust a scalar between the values of 0 to 6. This scalar is imported to all celestial bodies and multiplied onto the rotational and orbital speeds of the celestial bodies. Below showcases two snippets of code coming from the main.js file, that composes the scene, which shows the construction of the gui controls and from Jupiter showing the gui controls speed being multiplied onto the rotational and orbital speeds.</p>
+
+
+<p>main.js gui control construction</p>
+
+```
+...
+
+const dat = require("dat.gui");
+
+export var guiControls = new (function() {
+  this.orbitalSpeed = 1;
+})();
+
+var datGUI = new dat.GUI();
+
+datGUI.add(guiControls, "orbitalSpeed", 0, 6);
+
+...
+```
+
+<p>Jupiter code snippet showing scalar being multiplied onto orbital and rotational speeds</p>
+
+```
+import { guiControls } from "../../main";
+
+...
+this.update = function(time) {
+    jupiter.position.x =
+      Math.cos(time * 0.05 * guiControls.orbitalSpeed) * orbitRadius;
+    jupiter.position.y =
+      Math.sin(time * 0.05 * guiControls.orbitalSpeed) * orbitRadius;
+    jupiter.rotation.y = time * 0.45 * guiControls.orbitalSpeed;
+};
+
+```
