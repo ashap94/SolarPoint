@@ -38,7 +38,7 @@ function Jupiter(scene, domEvents) {
   );
 
   jupiterHighlight.material.visible = false;
-  // scene.add(jupiterHighlight);
+
   jupiter.add(jupiterHighlight);
   var threeElement = document.getElementById("canvas");
   var planetTitle = document.getElementById("jupiter-title");
