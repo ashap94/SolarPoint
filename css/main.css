@@ -17,6 +17,42 @@ body {
   left: 42%;
 }
 
+.linkedin-icon {
+  position: absolute;
+  bottom: 30vh;
+  left: 30px;
+  color: rgb(250, 250, 250);
+  font-size: 30px;
+}
+
+.linkedin-icon:hover {
+  color: rgb(62, 163, 210);
+}
+
+.github-icon {
+  position: absolute;
+  bottom: 18vh;
+  left: 30px;
+  color: rgb(250, 250, 250);
+  font-size: 30px;
+}
+
+.github-icon:hover {
+  color: rgb(62, 163, 210);
+}
+
+.profile-icon {
+  position: absolute;
+  bottom: 5vh;
+  left: 30px;
+  color: rgb(250, 250, 250);
+  font-size: 30px;
+}
+
+.profile-icon:hover {
+  color: rgb(62, 163, 210);
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
