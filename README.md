@@ -2,7 +2,7 @@
 
 <p>3D interactive educational model of Solar System utilizing Three.js, Javascript, HTML and CSS.</p>
 
-![solarpoint](https://user-images.githubusercontent.com/52110753/71786573-8ed8fc00-2fc1-11ea-89b7-aa586784610e.gif)
+![solarpoint_intro](https://user-images.githubusercontent.com/52110753/71934015-54ee2e00-3158-11ea-9c1f-741ee0883cbe.gif)
 
 <a href="https://ashap94.github.io/SolarPoint/" target="_blank">Check out the Live Site here!</a>
 
