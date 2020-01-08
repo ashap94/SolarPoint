@@ -40,8 +40,12 @@ function StarField (scene) {
 
 export default StarField;
 ```
+<h2>Event Handlers</h2>
 
 <p>Each celestial body has event handlers such as having a modal popup with fun information upon clicking the body and on hover having the name of the body appear on top of the screen in addition to having a red wire mesh surround the body based on the radius of the celestial body. Below shows the construction of the red wire mesh that appears upon hover of the celstial body, in this case Jupiter, as well as appending the wire mesh onto Jupiter so that as Jupiter rotates around the screen on its orbit, the wire mesh is always centralized in position relative to Jupiter and all the other celestial bodies.</p>
+
+![jupiter_handlers_720p](https://user-images.githubusercontent.com/52110753/71942334-b40c6c80-3171-11ea-9112-44210021dfc3.gif)
+
 
 ```
 ...
@@ -84,10 +88,11 @@ const wireframeGeometry = new THREE.WireframeGeometry(
  ...
 ```
 
-![solarpoint_gui_showcase](https://user-images.githubusercontent.com/52110753/71788018-707bfc00-2fd3-11ea-9fde-c50ea33096d6.gif)
+<h2>Three.js Dat GUI</h2>
 
 <p>Made use of "dat.gui.min.js" library to create a GUI with a slider that will allow the user to dynamically adjust a scalar between the values of 0 to 6. This scalar is imported to all celestial bodies and multiplied onto the rotational and orbital speeds of the celestial bodies. Below showcases two snippets of code coming from the main.js file, that composes the scene, which shows the construction of the gui controls and from Jupiter showing the gui controls speed being multiplied onto the rotational and orbital speeds.</p>
 
+![gui_slider_720p](https://user-images.githubusercontent.com/52110753/71943004-f59e1700-3173-11ea-9ba4-040588017fe0.gif)
 
 <p>main.js gui control construction</p>
 
